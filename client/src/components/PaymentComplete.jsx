@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const PaymentComplete = () => {
   const location = useLocation();
@@ -22,23 +23,22 @@ const PaymentComplete = () => {
       console.error("VITE_API_URL is not defined in environment variables");
       return;
     }
+
     const verifyPayment = async () => {
       try {
-        const response = await fetch(`${SERVER}/api/lookup-payment`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ pidx, status }),
+        const SERVER = import.meta.env.VITE_API_URL; // Ensure VITE_ prefix is used
+        const response = await axios.post(`${SERVER}/api/lookup-payment`, {
+          pidx,
+          status,
         });
-
-        const data = await response.json();
-        console.log("Lookup Data=>", data);
-        if (!response.ok) {
-          throw new Error(data.message || "Lookup failed");
-        }
-        setLookupResult(data);
+        console.log("Lookup Data=>", response.data);
+        setLookupResult(response.data);
       } catch (err) {
-        console.error("Verification failed:", err);
-        setError("Payment verification failed");
+        console.error(
+          "Verification failed:",
+          err.response?.data || err.message
+        );
+        setError(err.response?.data?.message || "Payment verification failed");
       } finally {
         setLoading(false);
       }
