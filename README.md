@@ -4,7 +4,9 @@
 
 This repository contains a **MERN ( Express.js, React.js, Node.js)** application integrated with the **Khalti Sandbox Payment Gateway**.  
 It demonstrates how to build a full-stack payment system with a React frontend and a Node.js backend.
-
+```bash
+https://gyawali-paymentkhalti.netlify.app/
+```
 ---
 
 ## 📂 Project Structure
