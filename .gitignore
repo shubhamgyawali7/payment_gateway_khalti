@@ -1,5 +1,16 @@
+# Root
 node_modules
 .env
-dist
+
+# Frontend
+client/node_modules
 client/dist
+client/.env
+
+# Backend
 server/node_modules
+server/.env
+
+# Build
+dist
+.next
