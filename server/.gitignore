@@ -1,6 +1,5 @@
-# Git ignore rules
+node_modules
 .env
-# Ignore dependencies
-node_modules/
-node_modules/
-/node_modules/
+dist
+node_modules
+/node_modules
