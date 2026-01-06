@@ -5,11 +5,11 @@ import { handlePayment, lookupPayment } from "./khaltiController.js";
 
 dotenv.config();
 
-const CLIENT_URL = process.env.VITE_API_URL || "http://localhost:5173";
+const CLIENT = process.env.CLIENT_URL;
 const app = express();
 app.use(
   cors({
-    origin: CLIENT_URL || "http://localhost:5173",
+    origin: CLIENT,
     methods: ["GET", "POST"],
     credentials: true,
   })

@@ -27,7 +27,7 @@ const Home = () => {
           phone: "9800000001",
         },
       });
-      // console.log("Khalti Data=>", data);
+      console.log("Khalti Data=>", data);
       if (data.payment_url) {
         window.location.href = data.payment_url;
       } else {

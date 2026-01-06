@@ -17,15 +17,17 @@ const PaymentComplete = () => {
       setLoading(false);
       return;
     }
-    const SERVER = import.meta.env.API_URL || "http://localhost:5000";
-   
-
+    const SERVER = import.meta.env.VITE_API_URL;
+    if (!SERVER) {
+      console.error("VITE_API_URL is not defined in environment variables");
+      return;
+    }
     const verifyPayment = async () => {
       try {
         const response = await fetch(`${SERVER}/api/lookup-payment`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ pidx,status }),
+          body: JSON.stringify({ pidx, status }),
         });
 
         const data = await response.json();
